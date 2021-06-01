@@ -1,0 +1,21 @@
+
+limit_req_zone $binary_remote_addr zone=xxx:10m rate=2r/m;
+
+server {
+    listen 80;
+
+    server_name xxxxx;
+
+
+    location /v1/user {
+        limit_req zone=xxxx;
+        proxy_pass http://167.71.12.65:3000;
+    }
+
+    location / {
+        proxy_pass http://167.71.12.65:3000/;
+    }
+
+
+}
+
